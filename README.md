@@ -1,4 +1,4 @@
-All used packages
+All used packages:
 
 alacritty 0.17.0-1
 awww 0.12.1-1
