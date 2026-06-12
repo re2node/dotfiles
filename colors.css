@@ -1,0 +1,8 @@
+@define-color background #282c34;
+@define-color tooltip-background transparent;
+@define-color workspace-inactive rgba(255, 255, 255, 0.15);
+@define-color workspace-active #ffffff;
+@define-color container #292d35;
+@define-color border #8dc6f5;
+@define-color label #ffffff;
+@define-color progress #8dc6f5;
