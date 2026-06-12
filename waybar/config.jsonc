@@ -1,0 +1,217 @@
+{
+  "reload_style_on_change": true,
+  "layer": "top",
+  "position": "top",
+  "spacing": 4,
+  "height": 26,
+
+  "modules-left": [
+    "group/system",
+    "clock",
+    "group/audio",
+    "pulseaudio#microphone",
+    "mpris"
+  ],
+
+  "modules-center": [
+    "niri/workspaces",
+    "power-profiles-daemon"
+  ],
+
+  "modules-right": [
+    "bluetooth",
+    "network",
+    "group/power",
+    "tray",
+    "custom/powermenu"
+  ],
+
+  "temperature": {
+    "thermal-zone": 4,
+    "critical-threshold": 80,
+    "format": "{icon} {temperatureC}°C",
+    "format-critical": "󱗗 {temperatureC}°C",
+    "format-icons": ["", "", ""],
+    "tooltip": false
+  },
+
+  "memory": {
+    "format": "  {used} GiB",
+    "tooltip": false
+  },
+
+  "cpu": {
+    "format": "  {usage}%",
+    "tooltip": false
+  },
+
+  "clock": {
+    "format": "  {:%H:%M}",
+    "format-alt": "  {:L%d %B %Y}",
+    "tooltip": false
+  },
+
+  "niri/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      "active": "",
+      "default": ""
+    }
+  },
+
+  "power-profiles-daemon": {
+    "format": "{icon}",
+    "tooltip-format": "󰓅   {profile}\n󰒓   {driver}",
+    "interval": 10,
+    "format-icons": {
+      "default": "3",
+      "performance": "3",
+      "balanced": "2",
+      "power-saver": "1"
+    }
+  },
+
+  "mpris": {
+    "player": "spotify",
+    "format": "{artist} - {title}",
+    "max-length": 40,
+    "format-paused": "⏸ {artist} - {title}"
+  },
+
+  "tray": {
+    "icon-size": 13,
+    "spacing": 10
+  },
+
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-muted": " ",
+    "format-icons": {
+      "headphone": "󰋋",
+      "headset": "󰋋",
+      "hands-free": "󰋋",
+      "default": [" "," " ]
+    },
+    "tooltip": false
+  },
+  "pulseaudio/slider": {
+    "min": 0,
+    "max": 100,
+    "orientation": "horizontal"
+  },
+
+  "pulseaudio#microphone": {
+      "format": "{format_source}",
+      "format-source": " {volume}%",
+      "format-source-muted": " ",
+      "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
+      "on-scroll-up": "pactl set-source-volume @DEFAULT_SOURCE@ +5%",
+      "on-scroll-down": "pactl set-source-volume @DEFAULT_SOURCE@ -5%",
+      "scroll-step": 5,
+  },
+
+  "bluetooth": {
+    "format": "󰂯",
+    "format-connected": "󰂱 {num_connections}",
+    "format-disabled": "󰂲",
+    "tooltip-format-connected": "󰐻  {num_connections} Connected:\n{device_enumerate}",
+    "tooltip-format-enumerate-connected-battery": "󰂱  {device_alias} (󰠠  {device_battery_percentage}%)",
+    "on-click": "alacritty -e bluetui",
+    "on-click-right": "bluetoothctl power off"
+  },
+
+  "network": {
+    "format-wifi": "{icon} {ipaddr}",
+    "format-ethernet": "   {ipaddr}",
+    "format-linked": "󱘖  {ipaddr}",
+    "format-disconnected": "󰤣 ",
+    "format-disabled": "󰤮 ",
+    "format-icons": ["󰤯 ", "󰤟 ", "󰤢 ", "󰤥 ", "󰤨 "],
+
+    "tooltip-format-wifi": "{essid} ({signalStrength}%)\nFreq: {frequency}GHz",
+    "tooltip-format-ethernet": "󰈀  {ifname} (Connected)",
+    "tooltip-format-disconnected": "No Connection",
+
+    "format-alt": "{icon}"
+  },
+
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "󰃠 {percent}%",
+    "on-scroll-up": "brightnessctl set +5%",
+    "on-scroll-down": "brightnessctl set 5%-",
+    "tooltip": false
+  },
+  "backlight/slider": {
+    "min": 0,
+    "max": 100,
+    "orientation": "horizontal",
+    "device": "intel_backlight"
+  },
+
+  "battery": {
+    "interval": 10,
+    "format": "{icon} {capacity}%",
+    "format-charging": "{icon} {capacity}%",
+    "tooltip": false,
+    "states": {
+      "warning": 15,
+      "critical": 10
+    },
+    "format-icons": {
+        "default": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+        "charging": ["󰢟", "󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"]
+    },
+    "events": {
+      "on-discharging-warning": "notify-send -u normal 'Warning, Low Battery'",
+      "on-discharging-critical": "notify-send -u critical 'Warning, Very Low Battery'"
+    }
+  },
+
+  "custom/powermenu": {
+    "format": "",
+    "on-click": "powermenu.sh",
+    "tooltip": false
+  },
+
+  "group/audio": {
+    "orientation": "horizontal",
+    "drawer": {
+      "transition-duration": 500,
+      "transition-left-to-right": false,
+      "click-to-reveal": true
+    },
+    "modules": [
+      "pulseaudio",
+      "pulseaudio/slider"
+    ]
+  },
+
+  "group/power": {
+    "orientation": "horizontal",
+    "drawer": {
+      "transition-duration": 500,
+      "transition-left-to-right": false,
+      "click-to-reveal": true
+    },
+    "modules": [
+      "battery",
+      "backlight/slider",
+      "backlight"
+    ]
+  },
+
+  "group/system": {
+    "orientation": "horizontal",
+    "drawer": {
+      "transition-duration": 500,
+      "transition-right-to-left": false,
+      "click-to-reveal": true
+    },
+    "modules": [
+      "temperature",
+      "memory",
+      "cpu"
+    ]
+  }
+}

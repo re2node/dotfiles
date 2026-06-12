@@ -1,0 +1,121 @@
+@import "../colors.css";
+
+* {
+  margin: 0;
+  padding: 0;
+  min-height: 0px;
+  border: none;
+  border-radius: 0;
+  font-size: 13px;
+  font-family: "JetBrainsMono Nerd Font";
+}
+
+window#waybar {
+  background: @background;
+  border: 1px solid @border;
+}
+
+#system,
+#clock,
+#audio,
+#pulseaudio.microphone,
+#mpris,
+#power-profiles-daemon,
+#bluetooth,
+#network,
+#power,
+#tray {
+  margin: 4px 5px;
+  padding: 5px 20px;
+  background-color: @container;
+  border: 1px solid @border;
+  border-radius: 10px;
+  color: @label;
+}
+
+#custom-powermenu {
+  margin: 4px 5px;
+  padding: 5px 22px 5px 20px;
+  background-color: @container;
+  border: 1px solid @border;
+  border-radius: 10px;
+  color: @label;
+}
+
+#memory { padding: 0 12px 0 12px; }
+#backlight { padding: 0 6px 0 0; margin: 4px 4px 4px 0; }
+
+tooltip {
+  box-shadow: none;
+  border: none;
+  border-radius: 10px;
+}
+
+tooltip label {
+  background-color: transparent;
+  color: @label;
+  padding: 5px 20px;
+}
+
+#workspaces {
+  padding: 8px 10px;
+  background-color: @container;
+  margin: 5px 0;
+  border-radius: 10px;
+  border: 2px solid @border;
+}
+
+#workspaces button {
+  transition: all 0.2s ease-in-out;
+  padding: 0;
+  background-color: @workspace-inactive;
+  border-radius: 6px;
+  min-width: 30px;
+  margin: 0 3px;
+  color: transparent;
+}
+
+#workspaces button.active {
+  transition: all 0.3s ease-in-out;
+  min-width: 45px;
+  background-color: @workspace-active;
+}
+
+#workspaces button:hover {
+  box-shadow: none;
+  background-color: transparent;
+  text-shadow: none;
+}
+
+#tray.empty {
+  opacity: 0;
+  margin: 0;
+  padding: 0;
+  border: none;
+  min-width: 0;
+  background-color: transparent;
+}
+
+#pulseaudio-slider, #backlight-slider {
+  margin: 4px 0px;
+  padding: 0 8px 0 0;
+  background-color: transparent;
+  border-radius: 10px;
+}
+
+#pulseaudio-slider trough, #backlight-slider trough {
+  min-height: 10px;
+  min-width: 80px;
+  border-radius: 10px;
+  background-color: @label;
+}
+
+#pulseaudio-slider highlight, #backlight-slider highlight {
+  min-height: 10px;
+  border-radius: 10px;
+  background-color: @progress;
+}
+
+#pulseaudio-slider slider, #backlight-slider slider {
+  all: unset;
+}
